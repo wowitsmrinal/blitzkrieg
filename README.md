@@ -3,4 +3,4 @@ Blitzkrieg
 
 A Blitzkrieg Warfare game, and complementary AI.
 
-Play at https://github.com/wowitsmrinal/blitzkrieg
+Play at http://wowitsmrinal.github.io/blitzkrieg.
