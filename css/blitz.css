@@ -1,0 +1,107 @@
+html {
+  height: 100%;
+}
+
+body {
+  font-size: 16px;
+  background-color: #fffff4;
+  position: relative;
+  min-height: 100%;
+}
+
+.container {
+  min-width: 600px;
+  min-height: 800px;
+}
+
+#blitz-vis {
+  margin-top: 0px;
+  margin-bottom: 5px;
+  height: 542px;
+  width:  542px;
+  /*  border: 1px solid black;*/
+}
+
+.Blue {
+  background-color: #285e8e;
+}
+
+.Green {
+  background-color: #398439;
+}
+
+a {
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.step {
+  width:245px;
+}
+
+.sepsec {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+hr {
+  margin-top: 30px;
+  border-top: 1px solid #ccc;
+}
+
+div.input {
+  width: 148px;
+  display: inline-block;
+}
+
+a.generate {
+  margin-left: 2px;
+}
+
+footer {
+  position: absolute;
+  font-size: 13px;
+  margin-bottom: 5px;
+  bottom: 0;
+  border-top: 1px solid #ccc;
+  width: inherit;
+}
+
+.vspace {
+  margin: 5px 0;
+}
+
+.bigvspace {
+  margin: 25px 0;
+}
+
+canvas {
+  background-color: #BBBBBB;
+  width: 90px;
+  border: 1px solid white;
+  float: left;
+  opacity: 0.75;
+  border-radius: 8px;
+}
+
+canvas.field {
+  height: 90px;
+}
+
+div.gamerow {
+  margin: 0 auto;
+}
+
+.turn {
+  display:block;
+  width: 160px;
+}
+
+.b-score, .g-score {
+  display:inline-block;
+  width: 75px;
+}
+
+h3 {
+  font-weight: bold;
+}
