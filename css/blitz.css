@@ -8,6 +8,10 @@ body {
   position: relative;
   min-height: 100%;
 }
+.modal .modal-body {
+    max-height: 542px;
+    overflow-y: auto;
+}
 
 .container {
   min-width: 600px;

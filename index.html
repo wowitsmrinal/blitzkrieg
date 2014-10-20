@@ -1,167 +1,183 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Blitzkrieg</title>
-  <link href='css/bootstrap.min.css' rel='stylesheet'>
-  <link rel='stylesheet' href='css/blitz.css' type='text/css' />
-  <link rel="shortcut icon" type="image/png" href="assets/favicon.png"/>
+	<title>Blitzkrieg</title>
+	<link href='css/bootstrap.min.css' rel='stylesheet'>
+	<link rel='stylesheet' href='css/blitz.css' type='text/css' />
+	<link rel="shortcut icon" type="image/png" href="assets/favicon.png"/>
 </head>
 <body>
-  <div class='container'>
-    <div class='row col-md-12'>
-      <img src='assets/logo.png' alt='Blitzkrieg' style="width:500px; height:80px; margin: 20px auto;" />
-      <br/>
-    </div>
-    <div class='row'>
+	<div class='container'>
+		<div class='row col-md-12'>
+			<img src='assets/logo.png' alt='Blitzkrieg' style="width:500px; height:80px; margin: 20px auto;" />
+			<br/>
+		</div>
+		<div class='row'>
 
-      <div class='col-md-6'>
-        <div id='blitz-vis'> <!-- Game Container -->
-          <div class="gamerow">
-            <canvas class="field" id="11" width="90" height="90"></canvas>
-            <canvas class="field" id="12" width="90" height="90"></canvas>
-            <canvas class="field" id="13" width="90" height="90"></canvas>
-            <canvas class="field" id="14" width="90" height="90"></canvas>
-            <canvas class="field" id="15" width="90" height="90"></canvas>
-            <canvas class="field" id="16" width="90" height="90"></canvas>
-          </div>
-          <div class="gamerow">
-            <canvas class="field" id="21" width="90" height="90"></canvas>
-            <canvas class="field" id="22" width="90" height="90"></canvas>
-            <canvas class="field" id="23" width="90" height="90"></canvas>
-            <canvas class="field" id="24" width="90" height="90"></canvas>
-            <canvas class="field" id="25" width="90" height="90"></canvas>
-            <canvas class="field" id="26" width="90" height="90"></canvas>
-          </div>
-          <div class="gamerow">
-            <canvas class="field" id="31" width="90" height="90"></canvas>
-            <canvas class="field" id="32" width="90" height="90"></canvas>
-            <canvas class="field" id="33" width="90" height="90"></canvas>
-            <canvas class="field" id="34" width="90" height="90"></canvas>
-            <canvas class="field" id="35" width="90" height="90"></canvas>
-            <canvas class="field" id="36" width="90" height="90"></canvas>
-          </div>
-          <div class="gamerow">
-            <canvas class="field" id="41" width="90" height="90"></canvas>
-            <canvas class="field" id="42" width="90" height="90"></canvas>
-            <canvas class="field" id="43" width="90" height="90"></canvas>
-            <canvas class="field" id="44" width="90" height="90"></canvas>
-            <canvas class="field" id="45" width="90" height="90"></canvas>
-            <canvas class="field" id="46" width="90" height="90"></canvas>
-          </div>
-          <div class="gamerow">
-            <canvas class="field" id="51" width="90" height="90"></canvas>
-            <canvas class="field" id="52" width="90" height="90"></canvas>
-            <canvas class="field" id="53" width="90" height="90"></canvas>
-            <canvas class="field" id="54" width="90" height="90"></canvas>
-            <canvas class="field" id="55" width="90" height="90"></canvas>
-            <canvas class="field" id="56" width="90" height="90"></canvas>
-          </div>
-          <div class="gamerow">
-            <canvas class="field" id="61" width="90" height="90"></canvas>
-            <canvas class="field" id="62" width="90" height="90"></canvas>
-            <canvas class="field" id="63" width="90" height="90"></canvas>
-            <canvas class="field" id="64" width="90" height="90"></canvas>
-            <canvas class="field" id="65" width="90" height="90"></canvas>
-            <canvas class="field" id="66" width="90" height="90"></canvas>
-          </div>
-        </div>
-        <div</div>
-        <div><h2><span class='label label-primary b-score'>0</span>  <span class='label label-success g-score'>0</span></h2><h4><span class='label label-primary turn'>Blue's Turn</span></h4></div>
-      </div>
+			<div class='col-md-6'>
+				<div id='blitz-vis'> <!-- Game Container -->
+					<div class="gamerow">
+						<canvas class="field" id="11" width="90" height="90"></canvas>
+						<canvas class="field" id="12" width="90" height="90"></canvas>
+						<canvas class="field" id="13" width="90" height="90"></canvas>
+						<canvas class="field" id="14" width="90" height="90"></canvas>
+						<canvas class="field" id="15" width="90" height="90"></canvas>
+						<canvas class="field" id="16" width="90" height="90"></canvas>
+					</div>
+					<div class="gamerow">
+						<canvas class="field" id="21" width="90" height="90"></canvas>
+						<canvas class="field" id="22" width="90" height="90"></canvas>
+						<canvas class="field" id="23" width="90" height="90"></canvas>
+						<canvas class="field" id="24" width="90" height="90"></canvas>
+						<canvas class="field" id="25" width="90" height="90"></canvas>
+						<canvas class="field" id="26" width="90" height="90"></canvas>
+					</div>
+					<div class="gamerow">
+						<canvas class="field" id="31" width="90" height="90"></canvas>
+						<canvas class="field" id="32" width="90" height="90"></canvas>
+						<canvas class="field" id="33" width="90" height="90"></canvas>
+						<canvas class="field" id="34" width="90" height="90"></canvas>
+						<canvas class="field" id="35" width="90" height="90"></canvas>
+						<canvas class="field" id="36" width="90" height="90"></canvas>
+					</div>
+					<div class="gamerow">
+						<canvas class="field" id="41" width="90" height="90"></canvas>
+						<canvas class="field" id="42" width="90" height="90"></canvas>
+						<canvas class="field" id="43" width="90" height="90"></canvas>
+						<canvas class="field" id="44" width="90" height="90"></canvas>
+						<canvas class="field" id="45" width="90" height="90"></canvas>
+						<canvas class="field" id="46" width="90" height="90"></canvas>
+					</div>
+					<div class="gamerow">
+						<canvas class="field" id="51" width="90" height="90"></canvas>
+						<canvas class="field" id="52" width="90" height="90"></canvas>
+						<canvas class="field" id="53" width="90" height="90"></canvas>
+						<canvas class="field" id="54" width="90" height="90"></canvas>
+						<canvas class="field" id="55" width="90" height="90"></canvas>
+						<canvas class="field" id="56" width="90" height="90"></canvas>
+					</div>
+					<div class="gamerow">
+						<canvas class="field" id="61" width="90" height="90"></canvas>
+						<canvas class="field" id="62" width="90" height="90"></canvas>
+						<canvas class="field" id="63" width="90" height="90"></canvas>
+						<canvas class="field" id="64" width="90" height="90"></canvas>
+						<canvas class="field" id="65" width="90" height="90"></canvas>
+						<canvas class="field" id="66" width="90" height="90"></canvas>
+					</div>
+				</div>
+				<div</div>
+				<div><h2><span class='label label-primary b-score'>0</span>  <span class='label label-success g-score'>0</span></h2><h4><span class='label label-primary turn'>Blue's Turn</span></h4></div>
+			</div>
 
-      <div class='col-md-6'>
-        <div class = 'row'>
-          <div class='col-md-12'>
-            <h3>Rules</h3>
-            <ul>
-              <li>
-                Blue goes first, then green.
-              </li>
-              <li>
-                Achieve higher total square value, when all places have been occupied.
-              </li>
-              <li>
-                Squares top, left, bottom and right of a square are adjacent to it.
-              </li>
-              <li>
-                In each turn, you can capture an unoccupied square, which is
-                <ul>
-                  <li>
-                    Not adjacent to any of your pieces.
-                  </li>
-                  <li>
-                    Adjacent to one of your pieces.
-                  </li>
-                </ul>
-                <li>
-                  If the latter is used, you will also capture enemy squares adjacent to the newly captured square (non-recursively).
-                </li>
+			<div class='col-md-6'>
+				<div class = 'row'>
+					<div class='col-md-12'>
+						<h3>Rules</h3>
+						<ul>
+							<li>
+								Blue goes first, then green.
+							</li>
+							<li>
+								Achieve higher total square value, when all places have been occupied.
+							</li>
+							<li>
+								Squares top, left, bottom and right of a square are adjacent to it.
+							</li>
+							<li>
+								In each turn, you can capture an unoccupied square, which is
+								<ul>
+									<li>
+										Not adjacent to any of your pieces.
+									</li>
+									<li>
+										Adjacent to one of your pieces.
+									</li>
+								</ul>
+								<li>
+									If the latter is used, you will also capture enemy squares adjacent to the newly captured square (non-recursively).
+								</li>
 
-              </ul>
-              <hr>
-            </div>
-          </div>
-          <div class='row'>
-            <div class = 'col-md-12'>
-              <h3>Configure</h3>
-              <a href = "http://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning">Alpha-Beta pruning</a> is a faster version of the <a href="http://en.wikipedia.org/wiki/Minimax">Minimax</a> algorithm.
-              <div class="row vspace"></div>
-              <div class="btn-group">
-                <button type="button" class="btn btn-input btn-default dropdown-toggle step dis" id="load-board" data-toggle="dropdown">
-                  <span data-bind="gboardtext">Board -- Smolensk</span> <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu" role="menu">
-                  <li><a href="#">Keren</a></li>
-                  <li><a href="#">Narvik</a></li>
-                  <li><a href="#">Sevastopol</a></li>
-                  <li><a href="#">Smolensk</a></li>
-                  <li><a href="#">Westerplatte</a></li>
-                </ul>
-              </div>
-              <div class="row vspace"></div>
-              <div id="blue-group" class="btn-group" data-toggle="buttons">
-                <label class="btn btn-primary dis bluelabel" value="0">
-                  <input type="radio" name="blueAlgo" id="b-mm" > Minimax
-                </label>              
-                <label class="btn btn-primary dis bluelabel "  value="1">
-                  <input type="radio" name="blueAlgo" id="b-ab"> A-B Pruning
-                </label>
-                <label class="btn btn-primary dis bluelabel active"  value="2">
-                  <input type="radio" name="blueAlgo" id="b-human"> Human
-                </label>
-              </div>
-              <div class="row vspace"></div>
-              <div id="green-group" class="btn-group" data-toggle="buttons">
-                <label class="btn btn-success dis greenlabel"  value="0">
-                  <input type="radio" name="greenAlgo" id="g-mm"> Minimax
-                </label>            
-                <label class="btn btn-success dis greenlabel active " value="1">
-                  <input type="radio" name="greenAlgo" id="g-ab" > A-B Pruning
-                </label>
-                <label class="btn btn-success dis greenlabel" value="2" >
-                  <input type="radio" name="greenAlgo" id="g-human" > Human
-                </label>
-              </div>
-              <div class="row vspace"></div>
-              <button type="button" id="play-game" class="btn btn-danger step">
-                Stop Game
-              </button>
-              <div class="row vspace"></div>
-              <button type="button" id="dl-match-report" class="btn btn-default step hidden">
-                Download Match Report
-              </button>
-              <div class="row bigvspace"></div>
-            </div>
-          </div>
-        </div>      
+							</ul>
+							<hr>
+						</div>
+					</div>
+					<div class='row'>
+						<div class = 'col-md-12'>
+							<h3>Configure</h3>
+							<a href = "http://en.wikipedia.org/wiki/Alpha%E2%80%93beta_pruning">Alpha-Beta pruning</a> is a faster version of the <a href="http://en.wikipedia.org/wiki/Minimax">Minimax</a> algorithm.
+							<div class="row vspace"></div>
+							<div class="btn-group">
+								<button type="button" class="btn btn-input btn-default dropdown-toggle step dis" id="load-board" data-toggle="dropdown">
+									<span data-bind="gboardtext">Board -- Smolensk</span> <span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="#">Keren</a></li>
+									<li><a href="#">Narvik</a></li>
+									<li><a href="#">Sevastopol</a></li>
+									<li><a href="#">Smolensk</a></li>
+									<li><a href="#">Westerplatte</a></li>
+								</ul>
+							</div>
+							<div class="row vspace"></div>
+							<div id="blue-group" class="btn-group" data-toggle="buttons">
+								<label class="btn btn-primary dis bluelabel" value="0">
+									<input type="radio" name="blueAlgo" id="b-mm" > Minimax
+								</label>              
+								<label class="btn btn-primary dis bluelabel "  value="1">
+									<input type="radio" name="blueAlgo" id="b-ab"> A-B Pruning
+								</label>
+								<label class="btn btn-primary dis bluelabel active"  value="2">
+									<input type="radio" name="blueAlgo" id="b-human"> Human
+								</label>
+							</div>
+							<div class="row vspace"></div>
+							<div id="green-group" class="btn-group" data-toggle="buttons">
+								<label class="btn btn-success dis greenlabel"  value="0">
+									<input type="radio" name="greenAlgo" id="g-mm"> Minimax
+								</label>            
+								<label class="btn btn-success dis greenlabel active " value="1">
+									<input type="radio" name="greenAlgo" id="g-ab" > A-B Pruning
+								</label>
+								<label class="btn btn-success dis greenlabel" value="2" >
+									<input type="radio" name="greenAlgo" id="g-human" > Human
+								</label>
+							</div>
+							<div class="row vspace"></div>
+							<button type="button" id="play-game" class="btn btn-danger step">
+								Stop Game
+							</button>
+							<div class="row vspace"></div>
+							<button type="button" id="view-log" class="btn btn-default step" data-toggle="modal" data-target="#myModal">
+								View Log
+							</button>
+							<div class="row bigvspace"></div>
+						</div>
+					</div>
+				</div>      
 
-      </div>
-      <footer>
-        Made by <a href="http://www.facebook.com/wowitsmrinal">Mrinal Mohit</a> for <a href="assignment.pdf">CS60045 (Artificial Intelligence)</a> | Source Code on <a href="https://github.com/wowitsmrinal/blitzkrieg">GitHub</a>.
-      </footer>
-    </div>
-    <script src='js/jquery.min.js'></script>
-    <script src='js/bootstrap.min.js'></script>
-    <script src='js/blitz.js'></script>
-  </body>
-  </html>
+			</div>
+			<footer>
+				Made by <a href="http://www.facebook.com/wowitsmrinal">Mrinal Mohit</a> for <a href="assignment.pdf">CS60045 (Artificial Intelligence)</a> | Source Code on <a href="https://github.com/wowitsmrinal/blitzkrieg">GitHub</a>.
+			</footer>
+		</div>
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+						<h4 class="modal-title" id="myModalLabel">Log</h4>
+					</div>
+					<div class="modal-body" id="logmodal">
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary">Copy To Clipboard</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src='js/jquery.min.js'></script>
+		<script src='js/bootstrap.min.js'></script>
+		<script src='js/blitz.js'></script>
+	</body>
+	</html>
