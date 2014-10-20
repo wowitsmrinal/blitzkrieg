@@ -1,11 +1,12 @@
 // Bookkeeping Variables
+var logString = ""
 var turnlabel = '.turn';
 var textfont = "35px Arial";
 var gameStopped = false;
 var gameover, turn, p1, p2;
 var depthLimit = 3;
 var opMM = 0; var opAB = 1; var opHuman = 2;
-var optimalMove;
+var optimalMove, turntype;
 
 // Class for Player 1 and 2
 function Player(color,colorname,label,scoreholder,algo) {
@@ -67,6 +68,7 @@ function markSq(board,fieldId,p,real) {
 	if(real) {markGridSq(fieldId,p);}
 };
 function updateBoard(board,fieldId,real,turn,depth) {
+	turntype = "Paradrop";
 	board.scorePlus = 0;
 	board.scoreMinus = 0;
 	if (gameover || sqOwner(board,fieldId) != 0) {
@@ -78,12 +80,15 @@ function updateBoard(board,fieldId,real,turn,depth) {
 
 	if (depth!=undefined) {mods[depth].length = 0;}
 	if (hasNeigh(board,fieldId,p(turn))) {
+		turntype = "Blitz";
 		captureNeigh(board,fieldId,turn,real,depth);
 	}
 
 	if (real) {
 		p(turn).score += board.scorePlus;
 		p(!turn).score -= board.scoreMinus;
+		var location = String.fromCharCode(Math.floor(parseInt(fieldId) / 10) + 65) + (parseInt(fieldId) % 10).toString();
+		logit(location + " " + p(turn).colorname + " " + turntype);
 	}
 	return true;
 };
@@ -275,6 +280,14 @@ function bottomStr(fieldId) {
 	else {return (parseInt(fieldId)+10).toString();}
 };
 
+function algotext(num) {
+	switch(num) {
+		case 1 : return "Minimax";
+		case 2 : return "Alpha-Beta Pruning"
+		case 3 : return "Human"
+	};
+}
+
 // Grid Update Functions
 
 function populateGrid(board) {
@@ -317,6 +330,7 @@ function switchTurn() {
 };
 
 function resetGame(disablebtn,stopped) {
+	logclear();
 	if(typeof(disablebtn)==='undefined') disablebtn = true;
 	if(typeof(stopped)==='undefined') stopped = false;
 	p1 = new Player(1,'Blue','label-primary','.b-score',parseInt($(".bluelabel.active").attr('value')));
@@ -331,7 +345,6 @@ function resetGame(disablebtn,stopped) {
 	gameBoard.turnCount = 0;
 	if (disablebtn) {
 		$('.dis').addClass('disabled');
-		$('#dl-match-report').addClass('disabled');
 		$('.active').removeClass('disabled');
 		$(turnlabel).removeClass('label-danger');
 	}
@@ -339,6 +352,11 @@ function resetGame(disablebtn,stopped) {
 		$(turnlabel).addClass('label-danger');
 		$(turnlabel).text('Game Stopped');
 	}
+
+	logit("Blue is " + algotext(p1.algo+1));
+	logit("Green is " + algotext(p2.algo+1));
+	logit("Board is " + boardnames[gameBoard.num]);
+	logit("");
 };
 
 function clearTurnlabel() {
@@ -386,11 +404,21 @@ function handleGameOver() {
 			$(turnlabel).text("Game Drawn");
 		}
 
-		$('#dl-match-report').removeClass('disabled');
 		gameStopped = true;
 		$('.dis').removeClass('disabled');
 		$('#play-game').text('Play New Game');
 	}
+}
+
+// Logging functions
+function logit(str) {
+	logString += str + "<br />";
+	$('#logmodal').html(logString);
+}
+
+function logclear() {
+	logString = "";
+	$('#logmodal').text(logString);
 }
 
 // Event Handlers
