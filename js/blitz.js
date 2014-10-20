@@ -16,6 +16,8 @@ function Player(color,colorname,label,scoreholder,algo) {
 	this.scoreholder = scoreholder;
 	this.algo = algo;
 	this.score = 0;
+	this.expNode = 0;
+	this.timeMoves = 0;
 };
 
 // Board Data and Functions
@@ -138,6 +140,22 @@ function captureCell(board,turn,cell,real,depth) {
 
 function Minimax(board,depth,maximizingPlayer,pscore,oppscore,turn) {
 	if (depth === 0 || board.turnCount === 36) {
+		if (depthLimit%2 === 0) {
+			if (turn) {
+				p1.expNode += 1;
+			}
+			else {
+				p2.expNode += 1;
+			}
+		}
+		else {
+			if (!turn) {
+				p1.expNode += 1;
+			}
+			else {
+				p2.expNode += 1;
+			}
+		}
 		return (pscore - oppscore);
 	}
 	var bestValue = maximizingPlayer ? Number.NEGATIVE_INFINITY : Number.POSITIVE_INFINITY;
@@ -163,6 +181,22 @@ function Minimax(board,depth,maximizingPlayer,pscore,oppscore,turn) {
 
 function AlphaBeta(board,depth,maximizingPlayer,pscore,oppscore,turn,alpha,beta) {
 	if (depth === 0 || board.turnCount === 36) {
+		if (depthLimit%2 === 0) {
+			if (turn) {
+				p1.expNode += 1;
+			}
+			else {
+				p2.expNode += 1;
+			}
+		}
+		else {
+			if (!turn) {
+				p1.expNode += 1;
+			}
+			else {
+				p2.expNode += 1;
+			}
+		}
 		return (pscore - oppscore);
 	}
 	var i,j;
@@ -377,6 +411,15 @@ function zeros(dimensions) {
 	return array;
 };
 
+function nwc(x) {
+	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+function nwcrounded(x) {
+	var y = Math.round(x * 100) / 100
+	return y.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 function clearGridSq(fieldId) {
 	$('#'+fieldId).removeClass(p1.colorname);
 	$('#'+fieldId).removeClass(p2.colorname);
@@ -391,17 +434,35 @@ function handleGameOver() {
 		gameover = true;
 		clearTurnlabel();
 
+		logit(" ");
+		if (p1.algo != opHuman) {
+			logit(p1.colorname + " scored " + nwc(p1.score) + " expanding " + nwc(p1.expNode) + " nodes at about " + nwcrounded(p1.timeMoves/18.0) + " ms per move.");
+		}
+		else {
+			logit(p1.colorname + " scored " + nwc(p1.score) + ".");
+		}
+		if (p2.algo != opHuman) {
+			logit(p2.colorname + " scored " + nwc(p2.score) + " expanding " + nwc(p2.expNode) + " nodes at about " + nwcrounded(p2.timeMoves/18.0) + " ms per move.");
+		}
+		else {
+			logit(p2.colorname + " scored " + nwc(p2.score) + ".");
+		}
+		logit(" ");
+
 		if (p1.score > p2.score) {
 			markTurnlabel(p1);
 			$(turnlabel).text(p1.colorname + " Wins");
+			logit(p1.colorname + " Wins ");
 		}
 		else if (p1.score < p2.score) {
 			markTurnlabel(p2);
 			$(turnlabel).text(p2.colorname + " Wins");
+			logit(p2.colorname + " Wins ");
 		}
 		else {
 			$(turnlabel).addClass('label-danger');
 			$(turnlabel).text("Game Drawn");
+			logit("Game Drawn");
 		}
 
 		gameStopped = true;
@@ -474,8 +535,15 @@ $(document).ready(function() {
 
 function autoMoveFn() {
 	if (gameStopped || p(turn).algo === opHuman) {return;}
-	if (p(turn).algo === opMM) {Minimax(gameBoard,depthLimit,true,p(turn).score,p(!turn).score,turn);}
-	else {AlphaBeta(gameBoard,depthLimit,true,p(turn).score,p(!turn).score,turn,Number.NEGATIVE_INFINITY,Number.POSITIVE_INFINITY);}
+	var start = new Date().getTime();
+	if (p(turn).algo === opMM) {
+		Minimax(gameBoard,depthLimit,true,p(turn).score,p(!turn).score,turn);
+	}
+	else {
+		AlphaBeta(gameBoard,depthLimit,true,p(turn).score,p(!turn).score,turn,Number.NEGATIVE_INFINITY,Number.POSITIVE_INFINITY);
+	}
+	var end = new Date().getTime();
+	p(turn).timeMoves += end-start;
 	updateBoard(gameBoard,optimalMove,true,turn);
 	switchTurn();
 	handleGameOver();
