@@ -21,7 +21,7 @@ function Player(color,colorname,label,scoreholder,algo) {
 var boardweights = new Array();
 var boardnames = new Array();
 var mods = new Array();
-for (var i = 0; i < 4; i++) {
+for (var i = 0; i < depthLimit+1; i++) {
 	mods[i] = new Array();
 };
 
