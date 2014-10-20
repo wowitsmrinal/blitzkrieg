@@ -1,12 +1,13 @@
 // Bookkeeping Variables
-var logString = ""
+var logString = "" // All logs are added to this string
 var turnlabel = '.turn';
 var textfont = "35px Arial";
 var gameStopped = false;
 var gameover, turn, p1, p2;
-var depthLimit = 3;
-var opMM = 0; var opAB = 1; var opHuman = 2;
-var optimalMove, turntype;
+var depthLimit = 3; // Specifies what ply level should the AI search upto.
+var opMM = 0; var opAB = 1; var opHuman = 2; // enumeration for easy compares
+var optimalMove; // Stores move computed by AI
+var turntype; // Variable for Paradrop / Blitz string
 
 // Class for Player 1 and 2
 function Player(color,colorname,label,scoreholder,algo) {
@@ -23,7 +24,7 @@ function Player(color,colorname,label,scoreholder,algo) {
 // Board Data and Functions
 var boardweights = new Array();
 var boardnames = new Array();
-var mods = new Array();
+var mods = new Array(); // For tracking modifications as one goes deeper into the minimax tree
 for (var i = 0; i < depthLimit+1; i++) {
 	mods[i] = new Array();
 };
@@ -322,6 +323,23 @@ function algotext(num) {
 	};
 }
 
+function zeros(dimensions) {
+	var array = [];
+	for (var i = 0; i < dimensions[0]; ++i) {
+		array.push(dimensions.length == 1 ? 0 : zeros(dimensions.slice(1)));
+	}
+	return array;
+};
+
+function nwc(x) {
+	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+function nwcrounded(x) {
+	var y = Math.round(x * 100) / 100
+	return y.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 // Grid Update Functions
 
 function populateGrid(board) {
@@ -402,23 +420,6 @@ function markTurnlabel(p) {
 	$(turnlabel).addClass(p.label);
 	$(turnlabel).text(p.colorname + "'s Turn");
 };
-
-function zeros(dimensions) {
-	var array = [];
-	for (var i = 0; i < dimensions[0]; ++i) {
-		array.push(dimensions.length == 1 ? 0 : zeros(dimensions.slice(1)));
-	}
-	return array;
-};
-
-function nwc(x) {
-	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
-
-function nwcrounded(x) {
-	var y = Math.round(x * 100) / 100
-	return y.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-}
 
 function clearGridSq(fieldId) {
 	$('#'+fieldId).removeClass(p1.colorname);
